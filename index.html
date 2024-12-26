@@ -11,10 +11,11 @@
 <body>
     <header>
         <nav>
-            <!-- <button class="nav-toggle" aria-label="Toggle navigation">
+            <div class="nav-container">
+            <button class="nav-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
-            </button> -->
-            <ul>
+            </button>
+            <ul class="nav-menu">
                 <li><a href="#profile">Profile</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -103,9 +104,15 @@
         document.addEventListener('DOMContentLoaded', function() {
             const navToggle = document.querySelector('.nav-toggle');
             const navList = document.querySelector('nav ul');
-        
+            const navMenu = document.querySelector('.nav-menu');
+            
+            // Toggle menu when hamburger is clicked
             navToggle.addEventListener('click', function() {
                 navList.classList.toggle('show');
+
+                // Optional: Animate the hamburger icon
+                this.querySelector('i').classList.toggle('fa-bars');
+                this.querySelector('i').classList.toggle('fa-times');
             });
         
             // Close menu when clicking outside
@@ -113,13 +120,26 @@
                 const isClickInsideNav = navToggle.contains(event.target) || navList.contains(event.target);
                 if (!isClickInsideNav && navList.classList.contains('show')) {
                     navList.classList.remove('show');
+                    navToggle.querySelector('i').classList.add('fa-bars');
+                    navToggle.querySelector('i').classList.remove('fa-times');
                 }
+            });
+
+            // Close menu when clicking a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('show');
+                    navToggle.querySelector('i').classList.add('fa-bars');
+                    navToggle.querySelector('i').classList.remove('fa-times');
+                });
             });
         
             // Close menu when window is resized above mobile breakpoint
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 768) {
                     navList.classList.remove('show');
+                    navToggle.querySelector('i').classList.add('fa-bars');
+                    navToggle.querySelector('i').classList.remove('fa-times');
                 }
             });
         });

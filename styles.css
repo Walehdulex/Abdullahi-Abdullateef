@@ -61,6 +61,32 @@ nav ul li a:hover {
     transform: translateY(-2px);
 }
 
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+
 /* Hero section enhancement */
 .hero {
     text-align: center;
@@ -205,6 +231,46 @@ footer {
         padding: 10px 15px;
     }
 
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        z-index: 1001;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary-color);
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu li a {
+        display: block;
+        padding: 15px;
+        width: 100%;
+    }
+
+    .nav-menu li a:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
     nav ul.show {
         background: var(--primary-color);
         border-radius: 0 0 8px 8px;
@@ -234,3 +300,5 @@ footer {
         display: none;
     }
 }
+
+/* testing testing */
